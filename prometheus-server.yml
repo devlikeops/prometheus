@@ -1,0 +1,14 @@
+version: '3.3'
+
+networks:
+  prometheus:
+
+services:
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - /data/monitoring/prometheus-server/:/prometheus/
+    networks:
+      - prometheus
+
+    restart: always
