@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.4'
 
 networks:
   prometheus:
@@ -12,7 +12,7 @@ services:
       - /data/monitoring/prometheus-server/:/prometheus/
     networks:
       - prometheus
-    restart: always
+
 
   grafana:
     image: grafana/grafana
@@ -27,4 +27,3 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
     networks:
      - prometheus
-    restart: always
