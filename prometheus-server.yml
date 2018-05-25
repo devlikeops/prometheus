@@ -4,16 +4,6 @@ networks:
   prometheus:
 
 services:
-  prometheus:
-    image: prom/prometheus
-    ports:
-     - 9090:9090
-    volumes:
-      - /data/monitoring/prometheus-server/:/prometheus/
-    command: "true"
-    networks:
-      - prometheus
-    restart: always
 
   grafana:
     image: grafana/grafana
@@ -21,9 +11,6 @@ services:
       - 3000:3000
     volumes:
       - /data/monitoring/grafana:/var/lib/grafana
-    command: "true"
-    depends_on:
-      - prometheus
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=grafana
       - GF_SECURITY_ADMIN_USER=admin
