@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.3'
 
 networks:
   prometheus:
@@ -10,9 +10,10 @@ services:
      - 9090:9090
     volumes:
       - /data/monitoring/prometheus-server/:/prometheus/
+    command: "true"
     networks:
       - prometheus
-
+    restart: always
 
   grafana:
     image: grafana/grafana
@@ -20,6 +21,7 @@ services:
       - 3000:3000
     volumes:
       - /data/monitoring/grafana:/var/lib/grafana
+    command: "true"
     depends_on:
       - prometheus
     environment:
@@ -27,3 +29,4 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
     networks:
      - prometheus
+    restart: always
